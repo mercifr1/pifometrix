@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>/2019/05/26/test001/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/2016/12/30/a-plain-markdown-post/</loc>
     <lastmod>2016-12-30T21:49:57-07:00</lastmod>
   </url>
@@ -39,6 +34,12 @@
   </url>
   
   <url>
+    <loc>/tags/bayesian-orr/</loc>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
     <priority>0</priority>
   </url>
@@ -57,13 +58,19 @@
   
   <url>
     <loc>/categories/r/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r-bayes/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r-markdown/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -75,7 +82,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

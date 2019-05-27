@@ -4,9 +4,10 @@ author: mgrafit
 date: '2019-05-26'
 slug: test001
 categories:
-  - R
+  - R, Bayes
 tags:
-  - R Markdown
+  - Bayesian, ORR
 ---
 
-This is a tentative .Rmd new post.
+The beta-binomial distribution is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.
+
