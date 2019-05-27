@@ -15,15 +15,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, warning=F, message=F, error=F, results='asis', echo=FALSE}
 library(tidyverse)
-library(ggridges)
 library(PropCIs)
+library(HDInterval)
+library(purrr)
 ```
 
 ## Exact 95%CI
 Assuming an early clinical trial, with 1 responder out of 24 patients. The 95% confidence interval for the responder rate can be calculated exactly, and is known as the Clopper-Pearson exact method.
 
 ```{r}
-exaci<-exactci(x=1, n=24, conf.level=0.95)
+exaci<-PropCIs::exactci(x=1, n=24, conf.level=0.95)
 round(exaci$conf.int, 4)
 ```
 
@@ -36,7 +37,7 @@ Assuming the responder/non-responder outcome has been registered in the below or
 #' total sample size (n); successes (Y)
 n=24;Y=1; 
 #' beta prior
-a=2; b=2
+a=1; b=4
 #' prop. grid   
 grid   <- seq(0,1,length.out=100)
 #' elements
@@ -57,15 +58,100 @@ ggplot(df, aes(x=grid, y=probas))+
 ```
 
 
-The 95% HDI is the interval with the highest density
+Calculation of the posterior mean and 95% interval:
+```{r}
+n=24;Y=1; 
+#' beta prior
+a=1; b=4
+round((Y+a)/(n+a+b), 4)
+round(qbeta(c(0.025, 0.975), Y+a, n-Y+b), 4)
+```
+Calculation of the posterior probability that p>0.15:
+```{r}
+n=24;Y=1; 
+#' beta prior
+a=1; b=4
+round(1-pbeta(0.15, Y+a, n-Y+b), 4)
+```
 
-quantile(posterior, c(0.025, 0.5, 0.975))
+Had we chosen other priors ...
+```{r}
+#' total sample size (n); successes (Y)
+n=24;Y=1; 
+#' beta prior
+a1=1; b1=1 #uniform
+a2=2; b2=2 #weakly inf centered on 0.5
+a3=1; b3=4 #weakly inf centered on 0.2
+#' prop. grid   
+grid<- seq(0,1,length.out=100)
+#' elements
+like <- dbinom(Y,n,grid); like=like/sum(like) #standardize
+prior1<- dbeta(grid,a1,b1); prior1=prior1/sum(prior1) #standardize
+prior2<- dbeta(grid,a2,b2); prior2=prior2/sum(prior2) #standardize
+prior3<- dbeta(grid,a3,b3); prior3=prior3/sum(prior3) #standardize
+post1 <- like*prior1; post1<-post1/sum(post1)
+post2 <- like*prior2; post2<-post2/sum(post2)
+post3 <- like*prior3; post3<-post3/sum(post3)
+
+df<-data.frame(grid=rep(rep(grid, 3), 3), 
+               probas=c(c(prior1, like, post1), c(prior2, like, post2), c(prior3, like, post3)),
+               value=rep(rep(c("prior", "like", "post"), each=100), 3),
+               scenario=rep(c("Uniform", "Centered", "Skewed"), each=300))
+
+ggplot(df, aes(x=grid, y=probas))+
+  geom_density(aes(fill=as.factor(value)), alpha=.3, stat="identity") +
+  facet_wrap(~scenario, nrow=1)+
+  ylab("Density")+
+  scale_x_continuous("Probability")+
+  scale_fill_viridis_d("") +
+  theme_minimal()
+```
+
+The 95% HDI can be calculated as the highest density interval for posterior samples. Unlike equal-tailed intervals that exclude 2.5% from each tail of the distribution, the HDI is not equal-tailed and therefore always includes the mode(s) of posterior distributions.
+
+```{r}
+n=24;Y=1; 
+#' beta prior
+a=1; b=4
+#' prop. grid   
+grid<- seq(0,1,length.out=100)
+zhdi<-hdi(qbeta(grid, Y+a, n-Y+b), 0.95)
+round(zhdi, 4)
+```
 
 ## Sequential updates
 As cohorts are providing staggered (with increasing dose levels), the prior and posterior distributions can actually be updated as time goes.
 
+```{r}
+d<-data.frame(Cohort=c(1, 2, 3, 4, 5, 6),
+          Dose=c(65, 160, 400, 400, 800, 1200),
+          ncum=c(1, 2, 3, 6, 19, 24), 
+          Ycum=c(0, 0, 0, 0, 1, 1),
+          a=1, b=4) %>%
+  mutate(shap1=Ycum+a, shap2=ncum-Ycum+b)
 
+set.seed(123)
 
+#Use of pmap from https://github.com/jennybc/row-oriented-workflows/blob/master/ex08_nesting-is-good.md
+my_dbeta <- function(...) {
+  l <- list(...)
+  dbeta(x=grid, shape1=l$shap1, shape2=l$shap2)
+}
+
+set.seed(123)
+lbeta<-pmap(d, my_dbeta)
+lbeta2<-map(lbeta, function(x) x/max(x))
+dfbeta<-as.data.frame(t(do.call(rbind, lbeta2))) %>%
+gather(VCohort, probas) %>% 
+mutate(grid=rep(grid, 6), Cohort=as.character(substr(VCohort, 2, 2)))
+
+ggplot(dfbeta, aes(x=grid, y=probas))+
+  geom_line()+
+  facet_wrap(~Cohort, ncol=1)+
+  scale_x_continuous("Probability", limits=c(0, .3))+
+  ylab("")+
+  theme_minimal()
+```
 
 
 
