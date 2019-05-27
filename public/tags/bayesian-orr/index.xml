@@ -17,7 +17,8 @@
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/05/26/test001/</guid>
-      <description>The beta-binomial distribution is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.</description>
+      <description>Exact 95%CIAssuming an early clinical trial, with 1 responder out of 24 patients. The 95% confidence interval for the responder rate can be calculated exactly, and is known as the Clopper-Pearson exact method.
+exaci&amp;lt;-exactci(x=1, n=24, conf.level=0.95)round(exaci$conf.int, 4)## [1] 0.0011 0.2112## attr(,&amp;quot;conf.level&amp;quot;)## [1] 0.95Using a Bayesian approachThe beta-binomial distribution (https://www.wikiwand.com/en/Beta-binomial_distribution) is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.</description>
     </item>
     
   </channel>

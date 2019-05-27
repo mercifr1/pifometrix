@@ -9,5 +9,72 @@ tags:
   - Bayesian, ORR
 ---
 
-The beta-binomial distribution is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warning=F, message=F, error=F, results='asis', echo=FALSE}
+library(tidyverse)
+library(ggridges)
+library(PropCIs)
+```
+
+## Exact 95%CI
+Assuming an early clinical trial, with 1 responder out of 24 patients. The 95% confidence interval for the responder rate can be calculated exactly, and is known as the Clopper-Pearson exact method.
+
+```{r}
+exaci<-exactci(x=1, n=24, conf.level=0.95)
+round(exaci$conf.int, 4)
+```
+
+## Using a Bayesian approach
+The beta-binomial distribution (https://www.wikiwand.com/en/Beta-binomial_distribution) is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.
+
+Assuming the responder/non-responder outcome has been registered in the below order, we want to see how our prior belief is updated as evidence accumulates during a Ph1 oncology clinical trial.
+
+```{r}
+#' total sample size (n); successes (Y)
+n=24;Y=1; 
+#' beta prior
+a=2; b=2
+#' prop. grid   
+grid   <- seq(0,1,length.out=100)
+#' elements
+like <- dbinom(Y,n,grid); like=like/sum(like) #standardize
+prior<- dbeta(grid,a,b); prior=prior/sum(prior) #standardize
+post <- like*prior; post<-post/sum(post)
+
+df<-data.frame(grid=rep(grid, 3), 
+               probas=c(prior, like, post), 
+               value=rep(c("prior", "like", "post"), each=100))
+
+ggplot(df, aes(x=grid, y=probas))+
+  geom_density(aes(fill=as.factor(value)), alpha=.3, stat="identity") +
+  ylab("Density")+
+  scale_x_continuous("Probability")+
+  scale_fill_viridis_d("") +
+  theme_minimal()
+```
+
+## Sequential updates
+As cohorts are providing staggered (with increasing dose levels), the prior and posterior distributions can actually be updated as time goes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
