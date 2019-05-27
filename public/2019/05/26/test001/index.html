@@ -107,6 +107,8 @@ ggplot(df, aes(x=grid, y=probas))+
   scale_fill_viridis_d(&quot;&quot;) +
   theme_minimal()</code></pre>
 <p><img src="/post/2019-05-26-test001_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The 95% HDI is the interval with the highest density</p>
+<p>quantile(posterior, c(0.025, 0.5, 0.975))</p>
 </div>
 <div id="sequential-updates" class="section level2">
 <h2>Sequential updates</h2>

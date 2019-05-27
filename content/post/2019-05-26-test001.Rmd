@@ -56,9 +56,13 @@ ggplot(df, aes(x=grid, y=probas))+
   theme_minimal()
 ```
 
+
+The 95% HDI is the interval with the highest density
+
+quantile(posterior, c(0.025, 0.5, 0.975))
+
 ## Sequential updates
 As cohorts are providing staggered (with increasing dose levels), the prior and posterior distributions can actually be updated as time goes.
-
 
 
 
