@@ -1,0 +1,12 @@
+---
+title: Beta-binomial responder rate
+author: mgrafit
+date: '2019-05-26'
+slug: test001
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+This is a tentative .Rmd new post.
