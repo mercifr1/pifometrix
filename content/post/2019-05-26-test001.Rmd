@@ -1,5 +1,6 @@
 ---
-title: Beta-binomial responder rate
+title: "Beta-binomial responder rate"
+subtitle: "Decision based on posterior probability of ORR>15%"
 author: mgrafit
 date: '2019-05-26'
 slug: test001
@@ -8,6 +9,11 @@ categories:
 tags:
   - Bayesian, ORR
 ---
+
+$$ $$
+$$ $$
+$$ $$
+$$ $$
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

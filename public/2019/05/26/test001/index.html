@@ -6,7 +6,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<title>Beta-binomial responder rate - A Hugo website</title>
+<title>Beta-binomial responder rate - Decision based on posterior probability of ORR&gt;15%  - A Hugo website</title>
 <meta property="og:title" content="Beta-binomial responder rate - A Hugo website">
 
 
@@ -48,7 +48,7 @@
     
     <li><a href="/about/">About</a></li>
     
-    <li><a href="https://github.com/mercifr1">GitHub</a></li>
+    <li><a href="https://github.com/mercifr1/pifometrix">GitHub</a></li>
     
     <li><a href="https://twitter.com/mgrafit">Twitter</a></li>
     
@@ -72,7 +72,11 @@
     
 
     <div class="article-content">
-      <div id="exact-95ci" class="section level2">
+      <p><span class="math display">\[ \]</span>
+<span class="math display">\[ \]</span>
+<span class="math display">\[ \]</span>
+<span class="math display">\[ \]</span></p>
+<div id="exact-95ci" class="section level2">
 <h2>Exact 95%CI</h2>
 <p>Assuming an early clinical trial, with 1 responder out of 24 patients. The 95% confidence interval for the responder rate can be calculated exactly, and is known as the Clopper-Pearson exact method.</p>
 <pre class="r"><code>exaci&lt;-PropCIs::exactci(x=1, n=24, conf.level=0.95)
