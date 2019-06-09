@@ -168,7 +168,7 @@ https://en.wikipedia.org/wiki/Beta-binomial_distribution
 http://www.koenbro.com/the-beta-distribution/#highest-density-interval
 
 
-
+And this is a link to the [**PDF**](https://github.com/mercief3/pifometrics/public/pdfs/Blogtest.pdf) document.
 
 
 
