@@ -1,0 +1,40 @@
+---
+title: 2019 BayesPharma meeting highlights
+subtitle: 
+author: mgrafit
+date: 2019-06-13
+output: pdf_document
+categories:
+  - R, Bayes
+tags:
+  - Bayesian, conference
+---
+
+A couple of weeks ago, I gave a talk at the **10th BayesPharma meeting**. The meeting was held in Lyon, a beautiful city with a sunny weather 
+The meeting program and slides are all available [here](http://www.bayes-pharma.org/official-program-and-slides/).
+With >70 attendees, this meeting attracts more and more statisticians involved in clinical or preclinical development.
+
+As a pre-meeting warm-up, Adrian Mander (MRC Biostat Unit) and James Wason (Newcastle U) gave a lecture on adaptive trial design in early development using their R package ‘bcrm’.
+
+I gave a ‘tutorial’ (slides attached) on how you go about fitting a nonlinear mixed-effect models using the R ‘brms’ package.
+
+Among the meeting highlights, I would list:
+
+- Kaspar Rufibach (Roche) gave a highly appreciated talk about Bayesian predictive power a.k.a. probability of success.
+- Yinbo Wang (Novartis) showed an example of how sample size could be reduced using historical data in the context of non-inferiority assessment,
+- Alice Gosselin (Sanofi) showed how to take advantage of propensity score to derive weighted (i.e. baseline covariates adjusted) ORR (objective response rate) in oncology trials, using historical control and current control data,
+- Fabiola LaGamba (Janssen) showed her PhD thesis work on fitting a K-PD model to temperature data in preclinical mouse models, using combination of two therapeutic agents,
+- Burak Kursad Gunham (UMC Gottingen) presented an update on the R MetaStan package he is developing to run model-based meta-analysis easily,
+- Jack Lee (MD Anderson Cancer Center) gave a 10’000 feet overview of the comprehensive trial design tool available on line: trialdesign.org (see also biostatistics.mdanderson.org, ibl.mdanderson.org),
+- Pierre Colin (Sanofi) illustrated how to use adjust the PoS based on interim analysis readouts in a Bayesian setting,
+- Haiyan Zheng (Newcastle U) gave a brilliant presentation of a Bayesian approach to borrow information across cohorts in a basket trial.
+
+Couple of additional and personal take-home messages:
+
+- Things are moving fast in the Bayesian world. You better keep a look at it because it is coming at you!
+
+- Borrowing historical data inflates type I error rate … but that’s ok, who cares about type I error rate?
+
+- Check out the R packages: brms, bpp, MetaStan, RBesT
+
+Next meeting will be held next to the FDA offices, in Rockville (MD), in May-2020.
