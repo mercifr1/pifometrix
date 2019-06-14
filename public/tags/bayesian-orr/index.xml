@@ -1,26 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bayesian Orr on A Hugo website</title>
-    <link>/tags/bayesian-orr/</link>
-    <description>Recent content in Bayesian Orr on A Hugo website</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 26 May 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/bayesian-orr/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Beta-binomial responder rate</title>
-      <link>/2019/05/26/test001/</link>
-      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/05/26/test001/</guid>
-      <description>\[ \]\[ \]\[ \]\[ \]
-Exact 95%CIAssuming an early clinical trial, with 1 responder out of 24 patients. The 95% confidence interval for the responder rate can be calculated exactly, and is known as the Clopper-Pearson exact method.
-exaci&amp;lt;-PropCIs::exactci(x=1, n=24, conf.level=0.95)round(exaci$conf.int, 4)## [1] 0.0011 0.2112## attr(,&amp;quot;conf.level&amp;quot;)## [1] 0.95Using a Bayesian approachThe beta-binomial distribution (https://www.wikiwand.com/en/Beta-binomial_distribution) is the binomial distribution in which the probability of success at each trial is fixed but randomly drawn from a beta distribution prior to n Bernoulli trials.</description>
-    </item>
-    
-  </channel>
-</rss>
