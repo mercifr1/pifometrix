@@ -1,13 +1,13 @@
 ---
-title: "Beta-binomial responder rate"
-subtitle: "Decision based on posterior probability of ORR>15%"
+title: Beta-binomial responder rate
 author: mgrafit
 date: '2019-05-26'
-slug: BetaBin ORR
 categories:
   - R, Bayes
 tags:
   - Bayesian, ORR
+subtitle: Decision based on posterior probability of ORR>15%
+slug: BetaBin ORR
 ---
 
 $$ $$
