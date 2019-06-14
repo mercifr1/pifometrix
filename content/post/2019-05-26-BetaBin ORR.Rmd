@@ -3,7 +3,7 @@ title: "Beta-binomial responder rate"
 subtitle: "Decision based on posterior probability of ORR>15%"
 author: mgrafit
 date: '2019-05-26'
-slug: test001
+slug: BetaBin ORR
 categories:
   - R, Bayes
 tags:
@@ -166,14 +166,5 @@ http://www.sumsar.net/blog/2018/12/visualizing-the-beta-binomial/
 https://www4.stat.ncsu.edu/~reich/ABA/notes/BetaBinom.pdf
 https://en.wikipedia.org/wiki/Beta-binomial_distribution 
 http://www.koenbro.com/the-beta-distribution/#highest-density-interval
-
-
-And this is a link to the ![**PDF**](/pdfs/Blogtest.pdf) document.
-
-
-
-
-
-
 
 
